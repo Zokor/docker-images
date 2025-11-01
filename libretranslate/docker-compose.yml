@@ -1,0 +1,17 @@
+name: "libretranslate_server"
+services:
+
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    build:
+      context: ./dockerfiles
+      dockerfile: libretranslate.dockerfile    
+    container_name: libretranslate_server
+    restart: unless-stopped
+    environment:
+      LT_LOAD_ONLY: en,es,fr,de,pt,it
+      LT_API_KEYS: "false"
+      # LT_API_KEYS_ALLOWED: "dev_key_123"
+    ports:
+      - "8099:5000"
+

@@ -1,0 +1,13 @@
+name: "mailpit_server"
+services:
+
+  mailpit:
+    build:
+      context: ./dockerfiles
+      dockerfile: mailpit.dockerfile
+    container_name: mailpit_server_mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"   # Web UI
+      - "1025:1025"   # SMTP server
+
